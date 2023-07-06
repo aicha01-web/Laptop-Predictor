@@ -6,6 +6,7 @@ import pickle
 
 app = Flask(__name__)
 model = pickle.load(open('pipe.pkl', 'rb'))
+data = pickle.load(open('pipe.pkl', 'rb'))
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -19,12 +20,8 @@ def predict():
     
     prediction = model.predict(final_features)
     output = int(prediction[0])
-    if output == 1:
-        text = ">50K"
-    else:
-        text = "<=50K"
 
-    return render_template('index.html', prediction_text='Employee Income is {}'.format(text))
+    return render_template('index.html', prediction_text='Price is {}'.format(output))
 
 
 if __name__ == "__main__":
