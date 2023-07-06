@@ -62,9 +62,10 @@ if st.button('Predict Price'):
     _logger.log(1,X_res)
     Y_res = int(resolution.split('x')[1])
     memory = hdd + ssd + flash_storage
+    resolution = X_res * Y_res
     ppi = ((X_res ** 2) + (Y_res ** 2)) ** 0.5 / screen_size
-    query = np.array([company, type, ram, memory ,weight, hybrid, X_res,Y_res, ppi, cpu, hdd, ssd,
-                     gpu, os,flash_storage,screen_size,resolution])
+    query = np.array([company, type, screen_size, resolution, ram, memory ,gpu, os, weight,cpu, hdd, ssd, hybrid,flash_storage, X_res,Y_res, ppi])
     query = query.reshape(1, 17)
     st.balloons()
-    st.title("The predicted price of this configuration is " + str(int(np.exp(pipe.predict(query)[0]))))
+    # st.title(pipe.predict(query))
+    st.title("The predicted price for this configuration is " + str(np.floor(pipe.predict(query)[0]))+ ' FCFA')
