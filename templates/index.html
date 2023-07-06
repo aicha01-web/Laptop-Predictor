@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Laptop Price Prediction</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <div class="prediction">
+        <h1>Laptop Price Prediction</h1>
+        <form action="{{ url_for('predict')}}"method="post">
+		<label for="company">Company</label>
+		<select id="company" name="company" required="required">
+				<option value="Apple">Apple</option>
+				<option value="HP">HP</option>
+		</select>
+		<br>
+    		<label for="inches">Inches</label>
+    		<select id="inches" name="inches" required="required">
+      			<option value="13.3">13.3</option>
+      			<option value="15.6">15.6</option>
+      			<option value="15.4">15.4</option>
+    		</select>
+    		<br>
+		<label for="ram">Ram</label>
+    		<select id="ram" name="ram" required="required">
+      			<option value="8">8GB</option>
+      			<option value="16">16GB</option>
+		      	<option value="32">32GB</option>
+    		</select>
+    		<br>
+    		<label for="gpu">GPU</label>
+    		<select id="gpu" name="gpu" required="required">
+      			<option value="Intel">Intel</option>
+      			<option value="AMD">AMD</option>
+    		</select>
+    		<br>
+        	<button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+        </form>
+
+       <br>
+       <b>{{ prediction_text }}</b>
+    </div>
+</body>
+</html>
