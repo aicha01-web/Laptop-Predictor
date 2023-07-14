@@ -13,41 +13,57 @@ st.title("Laptop Price Predictor")
 
 st.markdown("Just fill out the specifications you need for your laptop and hit the button, and it's done! You will get the estimated price for the laptop.")
 
+left_column, middle_column, right_column = st.columns(3)
+
+with left_column:
 # brand
-company = st.selectbox('Brand', df['Company'].unique())
+    company = st.selectbox('Brand', df['Company'].unique())
 
+with middle_column:
 # type of laptop
-type = st.selectbox('Type', df['TypeName'].unique())
+    type = st.selectbox('Type', df['TypeName'].unique())
 
+with right_column:
 # Ram
-ram = st.selectbox('RAM(in GB)', df['Ram'].unique())
+    ram = st.selectbox('RAM(in GB)', df['Ram'].unique())
 
+left_column, middle_column, right_column = st.columns(3)
+with left_column:
 # weight
-weight = st.selectbox('Weight (in KG)', df['Weight'].unique())
+    weight = st.selectbox('Weight (in KG)', df['Weight'].unique())
 
+with middle_column:
 #flash storage
-flash_storage = st.number_input("Flash storage")
+    flash_storage = st.number_input("Flash storage")
 
+with right_column:
 #hybrid
-hybrid = st.selectbox("Hybride", ["No", "Yes"])
+    hybrid = st.selectbox("Hybride", ["No", "Yes"])
 
+left_column, middle_column, right_column = st.columns(3)
+with left_column:   
 # screen size
-screen_size = st.selectbox('Screen Size (in Inches)', df['Inches'].unique())
-
+    screen_size = st.selectbox('Screen Size (in Inches)', df['Inches'].unique())
+with middle_column:
 # resolution
-resolution = st.selectbox('Screen Resolution',['1920x1080', '1366x768', '1600x900', '3840x2160', '3200x1800', '2880x1800', '2560x1600','2560x1440', '2304x1440'])
-
-
+    resolution = st.selectbox('Screen Resolution',['1920x1080', '1366x768', '1600x900', '3840x2160', '3200x1800', '2880x1800', '2560x1600','2560x1440', '2304x1440'])
+with right_column:
 # cpu
-cpu = st.selectbox('CPU', df['Cpu brand'].unique())
+    cpu = st.selectbox('CPU', df['Cpu brand'].unique())
 
-hdd = st.selectbox('HDD(in GB)', [0, 128, 256, 512, 1024, 2048])
+left_column, right_column = st.columns(2)
+with left_column: 
+    hdd = st.selectbox('HDD(in GB)', [0, 128, 256, 512, 1024, 2048])
 
-ssd = st.selectbox('SSD(in GB)', [0, 8, 128, 256, 512, 1024])
+with right_column:
+    ssd = st.selectbox('SSD(in GB)', [0, 8, 128, 256, 512, 1024])
 
-gpu = st.selectbox('GPU Brand', df['Gpu'].unique())
+left_column, right_column = st.columns(2)
+with left_column:
+    gpu = st.selectbox('GPU Brand', df['Gpu'].unique())
 
-os = st.selectbox('OS', df['OpSys'].unique())
+with right_column:
+    os = st.selectbox('OS', df['OpSys'].unique())
 
 if st.button('Predict Price'):
     # query
